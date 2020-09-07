@@ -34,7 +34,7 @@
         <Grid Grid.Column="1"
               Background="#FFFFFFFF">
             <Label x:Name="label"
-                   Content="Eyy, lmao..." />
+                   Content="{Binding SelectedOrder.OrderId}" />
         </Grid>
     </Grid>
 </UserControl>

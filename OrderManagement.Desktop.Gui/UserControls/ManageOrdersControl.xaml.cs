@@ -44,8 +44,6 @@ namespace OrderManagement.Desktop.Gui.UserControls
             viewModel.Orders = viewModel.Customers
                 .FirstOrDefault(c => c.CustomerId == customer).Orders
                 .OrderByDescending(x => x.RequiredDate);
-
-            label.Content = customer;
         }
     }
 }
