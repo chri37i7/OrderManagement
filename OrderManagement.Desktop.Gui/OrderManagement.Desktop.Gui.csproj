@@ -21,11 +21,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrderManagement.DataAccess.Entities\OrderManagement.DataAccess.Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UserControls\" />
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\OrderManagement.DataAccess\OrderManagement.DataAccess.csproj" />
+    <ProjectReference Include="..\OrderManagement.Utilities\OrderManagement.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

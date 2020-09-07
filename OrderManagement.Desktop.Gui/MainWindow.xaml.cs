@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OrderManagement.Desktop.Gui.UserControls;
+using OrderManagement.Desktop.Gui.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,58 @@ namespace OrderManagement.Desktop.Gui
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel viewModel;
+        private bool isLoaded;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            viewModel = DataContext as MainWindowViewModel;
+        }
+
+        public UserControl MainContentControl
+        {
+            get
+            {
+                return mainContentControl;
+            }
+            set
+            {
+                mainContentControl = value;
+            }
+        }
+
+        private async void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if(!isLoaded)
+            {
+                isLoaded = !isLoaded;
+
+                await viewModel.InitializeAsync();
+            }
+        }
+
+        private void OnClick(object sender, RoutedEventArgs e)
+        {
+            string customer = viewModel.CustomerId;
+            string password = viewModel.CustomerPw;
+
+            if(CustomerExists(customer) && password == "12345")
+            {
+                login_Panel.Visibility = Visibility.Collapsed;
+
+                mainContentControl.Content = new ManageOrdersControl(customer);
+            }
+            else
+            {
+                MessageBox.Show("Brugeren findes ikke.", "Fejl!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private bool CustomerExists(string customer)
+        {
+            return (viewModel.Customers.FirstOrDefault(c => c.CustomerId == customer) != null) ? true : false;
         }
     }
 }

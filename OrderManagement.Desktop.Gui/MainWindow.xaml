@@ -4,9 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OrderManagement.Desktop.Gui"
+        xmlns:viewModel="clr-namespace:OrderManagement.Desktop.Gui.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Order Management"
+        Height="450"
+        Width="800"
+        Loaded="OnLoaded">
 
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <StackPanel x:Name="login_Panel"
+                VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,15">
+                <Label Width="120"
+                       Content="Customer ID"></Label>
+                <TextBox Width="120"
+                         Text="{Binding CustomerId, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,15">
+                <Label Width="120"
+                       Content="Password"></Label>
+                <TextBox Width="120"
+                         Text="{Binding CustomerPw, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+            <Button Width="80"
+                    Height="30"
+                    Content="Login"
+                    Click="OnClick" />
+        </StackPanel>
+        <UserControl x:Name="mainContentControl" />
     </Grid>
 </Window>

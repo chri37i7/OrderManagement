@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="OrderManagement.Desktop.Gui.UserControls.ManageOrdersControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:OrderManagement.Desktop.Gui.UserControls"
+             xmlns:viewModel="clr-namespace:OrderManagement.Desktop.Gui.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Loaded="OnLoaded">
+
+    <!--#region DataContext -->
+    <UserControl.DataContext>
+        <viewModel:OrderViewModel />
+    </UserControl.DataContext>
+    <!--#endregion-->
+
+    <Grid>
+        <!--#region Column Definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <ListView Grid.Column="0"
+                  ItemsSource="{Binding Orders}"
+                  DisplayMemberPath="OrderId"
+                  SelectedItem="{Binding SelectedOrder}">
+
+        </ListView>
+
+        <Grid Grid.Column="1"
+              Background="#FFFFFFFF">
+            <Label x:Name="label"
+                   Content="Eyy, lmao..." />
+        </Grid>
+    </Grid>
+</UserControl>
