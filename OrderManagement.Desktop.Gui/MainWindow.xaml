@@ -11,13 +11,15 @@
         Width="800"
         Loaded="OnLoaded">
 
+    <!--#region DataContext -->
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
     </Window.DataContext>
+    <!--#endregion-->
 
     <Grid>
         <StackPanel x:Name="login_Panel"
-                VerticalAlignment="Center">
+                    VerticalAlignment="Center">
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         Margin="0,0,0,15">
