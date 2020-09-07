@@ -68,7 +68,7 @@ namespace OrderManagement.Desktop.Gui.ViewModels
             // Create Repository
             CustomerRepository customerRepository = factory.Create();
 
-            // Get all products from the database
+            // Get all Customers from the database
             IEnumerable<Customer> customers = await customerRepository.GetAllAsync();
 
             // Replace Observable Collection
