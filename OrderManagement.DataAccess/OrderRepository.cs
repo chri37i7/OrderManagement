@@ -24,7 +24,6 @@ namespace OrderManagement.DataAccess
         {
             return context.Set<Order>()
                 .Include("Customer")
-                .Include("Employee")
                 .Include("OrderDetails");
         }
     }
